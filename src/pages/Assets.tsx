@@ -12,31 +12,29 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// Mock data for table & charts
-const salesData = [
-  { id: 1, month: "Jan", sales: 4000, category: "Electronics" },
-  { id: 2, month: "Feb", sales: 3000, category: "Clothing" },
-  { id: 3, month: "Mar", sales: 5000, category: "Electronics" },
-  { id: 4, month: "Apr", sales: 2000, category: "Furniture" },
-  { id: 5, month: "May", sales: 6000, category: "Clothing" },
-  { id: 6, month: "Jun", sales: 7000, category: "Electronics" },
+// Mock data for assets
+const assetsData = [
+  { id: 1, name: "Laptop", value: 1200, category: "Electronics" },
+  { id: 2, name: "Office Chair", value: 300, category: "Furniture" },
+  { id: 3, name: "Projector", value: 800, category: "Electronics" },
+  { id: 4, name: "Desk", value: 500, category: "Furniture" },
+  { id: 5, name: "Printer", value: 400, category: "Electronics" },
 ];
 
 const pieData = [
-  { name: "Electronics", value: 45 },
-  { name: "Clothing", value: 30 },
-  { name: "Furniture", value: 25 },
+  { name: "Electronics", value: 3 },
+  { name: "Furniture", value: 2 },
 ];
 
-const COLORS = ["#ec4899", "#3b82f6", "#10b981"]; // Pink, Blue, Green
+const COLORS = ["#ec4899", "#3b82f6"]; // Pink, Blue
 
-export function Data() {
+export function Assets() {
   return (
     <div className="min-h-screen bg-blue-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-pink-500">Data Insights</h2>
+          <h2 className="text-2xl font-bold text-pink-500">Asset Management</h2>
         </div>
 
         {/* Grid Layout: Table + Charts */}
@@ -44,7 +42,7 @@ export function Data() {
           {/* Table */}
           <div className="col-span-2 bg-white rounded-xl shadow p-4">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
-              Sales Data
+              Assets List
             </h3>
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -54,10 +52,10 @@ export function Data() {
                       ID
                     </th>
                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
-                      Month
+                      Name
                     </th>
                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
-                      Sales
+                      Value ($)
                     </th>
                     <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                       Category
@@ -65,14 +63,12 @@ export function Data() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
-                  {salesData.map((row) => (
-                    <tr key={row.id} className="hover:bg-gray-50">
-                      <td className="px-4 py-2 text-gray-700">{row.id}</td>
-                      <td className="px-4 py-2 text-gray-700">{row.month}</td>
-                      <td className="px-4 py-2 font-semibold text-pink-500">
-                        ${row.sales}
-                      </td>
-                      <td className="px-4 py-2 text-gray-500">{row.category}</td>
+                  {assetsData.map((asset) => (
+                    <tr key={asset.id} className="hover:bg-gray-50">
+                      <td className="px-4 py-2 text-gray-700">{asset.id}</td>
+                      <td className="px-4 py-2 text-gray-700">{asset.name}</td>
+                      <td className="px-4 py-2 font-semibold text-pink-500">{asset.value}</td>
+                      <td className="px-4 py-2 text-gray-500">{asset.category}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -83,17 +79,17 @@ export function Data() {
           {/* Line Chart */}
           <div className="bg-white rounded-xl shadow p-4">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
-              Monthly Sales Trend
+              Asset Value Trend
             </h3>
             <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={salesData}>
+              <LineChart data={assetsData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="month" stroke="#6b7280" />
+                <XAxis dataKey="name" stroke="#6b7280" />
                 <YAxis stroke="#6b7280" />
                 <Tooltip />
                 <Line
                   type="monotone"
-                  dataKey="sales"
+                  dataKey="value"
                   stroke="#ec4899"
                   strokeWidth={3}
                   dot={{ r: 5 }}
@@ -105,7 +101,7 @@ export function Data() {
           {/* Pie Chart */}
           <div className="bg-white rounded-xl shadow p-4">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
-              Category Distribution
+              Asset Category Distribution
             </h3>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>

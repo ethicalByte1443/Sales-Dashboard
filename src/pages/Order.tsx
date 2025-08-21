@@ -10,54 +10,49 @@ const orders = [
 
 export function Order() {
   return (
-    <div className="min-h-screen bg-blue-50">
-      <Header />
-      <Navigation />
-
-      <main className="ml-48 pt-16 p-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Title */}
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-pink-500">Order Management</h2>
-          </div>
-
-          {/* Table */}
-          <div className="bg-white rounded-xl shadow overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-pink-100">
-                <tr>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Order ID</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Customer</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Items</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Amount</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 text-gray-800 font-medium">{order.id}</td>
-                    <td className="px-6 py-4 text-gray-500">{order.customer}</td>
-                    <td className="px-6 py-4 text-gray-500">{order.items}</td>
-                    <td className="px-6 py-4 text-gray-700">{order.amount}</td>
-                    <td
-                      className={`px-6 py-4 font-medium 
-                        ${order.status === "Pending" ? "text-yellow-500" : ""} 
-                        ${order.status === "Shipped" ? "text-blue-500" : ""} 
-                        ${order.status === "Delivered" ? "text-green-500" : ""} 
-                        ${order.status === "Cancelled" ? "text-red-500" : ""}`}
-                    >
-                      {order.status}
-                    </td>
-                    <td className="px-6 py-4 text-gray-500">{order.date}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+    <>
+      <div className="max-w-7xl mx-auto">
+        {/* Title */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-pink-500">Order Management</h2>
         </div>
-      </main>
-    </div>
+
+        {/* Table */}
+        <div className="bg-white rounded-xl shadow overflow-hidden">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-pink-100">
+              <tr>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Order ID</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Customer</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Items</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Amount</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {orders.map((order) => (
+                <tr key={order.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 text-gray-800 font-medium">{order.id}</td>
+                  <td className="px-6 py-4 text-gray-500">{order.customer}</td>
+                  <td className="px-6 py-4 text-gray-500">{order.items}</td>
+                  <td className="px-6 py-4 text-gray-700">{order.amount}</td>
+                  <td
+                    className={`px-6 py-4 font-medium 
+                      ${order.status === "Pending" ? "text-yellow-500" : ""} 
+                      ${order.status === "Shipped" ? "text-blue-500" : ""} 
+                      ${order.status === "Delivered" ? "text-green-500" : ""} 
+                      ${order.status === "Cancelled" ? "text-red-500" : ""}`}
+                  >
+                    {order.status}
+                  </td>
+                  <td className="px-6 py-4 text-gray-500">{order.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 }
