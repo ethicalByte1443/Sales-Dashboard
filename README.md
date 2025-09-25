@@ -47,6 +47,3 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-## License
-
-MIT
