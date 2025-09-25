@@ -20,13 +20,10 @@ const queryClient = new QueryClient();
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="min-h-screen bg-blue-50">
-    {/* Fixed Header */}
     <Header />
 
-    {/* Fixed Navigation */}
     <Navigation />
 
-    {/* Page Content */}
     <main className="pt-16 pl-48 p-6">
       {children}
     </main>
